@@ -2,222 +2,77 @@
 <html lang="zh-Hant-TW">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Volley365｜排球品牌・預約平台與工具開發</title>
   <meta name="description" content="Volley365 是專注排球生態的品牌，提供球隊／教練／活動的預約排程平台，並開發相關應用工具與數位解決方案。" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta property="og:type" content="website" />
   <meta property="og:title" content="Volley365｜排球品牌・預約平台與工具開發" />
   <meta property="og:description" content="專注排球生態的預約平台與工具開發。" />
   <meta property="og:image" content="https://dummyimage.com/1200x630/111827/f8fafc&text=Volley365" />
   <meta property="og:locale" content="zh_TW" />
   <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111827'/%3E%3Cpath d='M50 8a42 42 0 1042 42A42 42 0 0050 8zm0 6a36 36 0 0132.5 19.5A68 68 0 0150 40a68 68 0 01-33-6.5A36 36 0 0150 14zm-36 36a36 36 0 0114.7-28.9A74 74 0 0050 46a74 74 0 0021.3-24.9A36 36 0 1150 86a36 36 0 01-36-36z' fill='%23f8fafc'/%3E%3C/svg%3E" />
   <style>
-    :root{
-      --bg:#0b1220;--panel:#0f172a;--muted:#94a3b8;--text:#e2e8f0;--brand:#22d3ee;--accent:#38bdf8;--ring:rgba(34,211,238,.45)
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans TC","PingFang TC",sans-serif;background:linear-gradient(180deg,#0b1220,#0b1220 40%,#0d1528 100%);color:var(--text)}
-    a{color:var(--brand);text-decoration:none}
+    body {margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans TC",sans-serif;background:#0b1220;color:#e2e8f0}
+    .container{max-width:960px;margin:0 auto;padding:20px}
+    header,footer{background:#0f172a;padding:16px}
+    h1,h2,h3{margin:12px 0}
+    .card{background:#111827;border:1px solid #334155;border-radius:12px;padding:20px;margin-bottom:20px}
+    a{color:#22d3ee;text-decoration:none}
     a:hover{text-decoration:underline}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;backdrop-filter:saturate(160%) blur(8px);background:rgba(11,18,32,.6);border-bottom:1px solid rgba(148,163,184,.15);z-index:20}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px}
-    .logo-badge{inline-size:28px;block-size:28px;border-radius:8px;display:grid;place-items:center;background:radial-gradient(circle at 30% 30%,var(--brand),var(--accent));box-shadow:0 0 0 2px rgba(34,211,238,.3)}
-    .logo-badge svg{width:18px;height:18px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(148,163,184,.25);border-radius:999px;color:var(--muted);font-size:12px}
-    .hero{padding:72px 0 48px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-    .headline{font-weight:800;font-size:42px;line-height:1.1;margin:12px 0}
-    .sub{color:var(--muted);font-size:18px;line-height:1.7}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;font-weight:700;border-radius:12px;border:1px solid rgba(148,163,184,.3);background:#0f172a;color:#e2e8f0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
-    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--accent));color:#0b1220;border-color:transparent}
-    .btn:focus{outline:none;box-shadow:0 0 0 6px var(--ring)}
-    .card{background:rgba(15,23,42,.7);border:1px solid rgba(148,163,184,.15);border-radius:16px;padding:20px}
-    .section{padding:48px 0}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .eyebrow{color:var(--brand);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
-    h2{font-size:28px;margin:10px 0 18px}
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0b1220;border:1px solid rgba(148,163,184,.25);padding:2px 8px;border-radius:6px;color:#cbd5e1;font-size:12px}
-    footer{border-top:1px solid rgba(148,163,184,.15);padding:28px 0;color:#94a3b8}
     .note{font-size:13px;color:#94a3b8}
-    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.headline{font-size:36px}}
+    .input{width:100%;margin-top:6px;background:#0b1220;border:1px solid #334155;border-radius:6px;padding:10px;color:#e2e8f0}
   </style>
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <div class="logo" aria-label="Volley365">
-        <span class="logo-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a9 9 0 100 18 9 9 0 000-18Z" fill="white"/><path d="M12 3a9 9 0 018.66 6.28A17 17 0 0112 11a17 17 0 01-8.66-1.72A9 9 0 0112 3Z" fill="#0ea5e9"/></svg>
-        </span>
-        Volley365
-      </div>
-      <nav style="display:flex;gap:16px;font-size:14px;color:#cbd5e1">
-        <a href="#about">關於</a>
-        <a href="#services">服務</a>
-        <a href="#contact">聯絡</a>
-      </nav>
+    <div class="container">
+      <h1>Volley365</h1>
+      <p>排球品牌｜預約平台｜工具開發</p>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="pill">排球品牌｜預約平台｜工具開發</span>
-          <h1 class="headline">用科技，讓排球的一切更好用、更好玩。</h1>
-          <p class="sub">Volley365 是專注於排球生態的品牌。我們打造 <strong>球館／課程／活動的預約平台</strong>，並開發 <strong>記分、數據、報名收費</strong> 等應用工具，讓球員、教練、主辦單位與球迷，都能更順暢地參與排球。</p>
-          <div class="cta">
-            <a class="btn primary" href="#contact">免費諮詢</a>
-            <a class="btn" href="#services">了解服務</a>
-          </div>
-          <p class="note" style="margin-top:10px">🚀 目前開放早鳥合作：球隊與球館夥伴可免費導入基礎方案。</p>
-        </div>
-        <div>
-          <div class="card">
-            <div class="eyebrow">即刻可用</div>
-            <h2 style="margin-top:6px">預約平台・應用工具</h2>
-            <ul style="line-height:1.9;color:#cbd5e1;margin:0;padding-left:18px">
-              <li>課程／場地預約：時段管理、候補、取消與退款流程</li>
-              <li>活動報名：名額控管、金流串接、候補與通知</li>
-              <li>比賽記分：手機／平板即時同步顯示（適合直播）</li>
-              <li>球隊管理：名冊、出缺勤、費用分攤、成績統計</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <main class="container">
+    <section class="card">
+      <h2>我們的使命</h2>
+      <p>Volley365 長期深耕台灣排球圈，打造預約平台與應用工具，讓球隊、教練與球迷的參與體驗更順暢。</p>
     </section>
 
-    <section id="about" class="section">
-      <div class="container grid-2">
-        <div class="card">
-          <div class="eyebrow">我們是誰</div>
-          <h2>Volley365｜排球品牌</h2>
-          <p style="color:#cbd5e1;line-height:1.9">我們長期深耕台灣排球圈，理解教練、球員與主辦單位在營運上的痛點。Volley365 期望用務實的數位工具，協助你把時間放在真正重要的事情：<strong>訓練、比賽、社群經營與體驗設計</strong>。</p>
-        </div>
-        <div class="card">
-          <div class="eyebrow">我們的使命</div>
-          <h2>讓排球的人事物，以最簡單的方式被連結</h2>
-          <p style="color:#cbd5e1;line-height:1.9">一支手機即可管理行程、報名與溝通；數據自動彙整，內容輕鬆產出。降低門檻、提升效率，讓更多人走進球館。</p>
-        </div>
-      </div>
+    <section class="card">
+      <h2>聯絡我們</h2>
+      <form onsubmit="return handleSubmit(event)">
+        <label>姓名<br/><input class="input" type="text" name="name" required></label><br><br>
+        <label>Email<br/><input class="input" type="email" name="email" required></label><br><br>
+        <label>需求簡述<br/><textarea class="input" name="message" rows="4"></textarea></label><br><br>
+        <button type="submit">送出需求</button>
+      </form>
+      <p class="note">或來信：hello@volley365.tw</p>
     </section>
 
-    <section id="services" class="section" aria-label="服務">
-      <div class="container">
-        <div style="text-align:center;margin-bottom:18px">
-          <div class="eyebrow">服務方案</div>
-          <h2>從入門到成長，挑一個最適合你的</h2>
-          <p class="sub" style="margin:0 auto;max-width:720px">先免費開始，隨需求升級。若你是學校球隊、社團或社群舉辦方，也有教育／非營利優惠。</p>
-        </div>
-        <div class="grid-3">
-          <div class="card">
-            <h3 style="margin:6px 0 8px">基礎 Free</h3>
-            <ul style="color:#cbd5e1;line-height:1.9;padding-left:18px;margin:0">
-              <li>單一活動／課程頁</li>
-              <li>報名表單＋Email 通知</li>
-              <li>基本名額控管（手動）</li>
-              <li>支援 Google 試算表匯出</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 style="margin:6px 0 8px">成長 Plus</h3>
-            <ul style="color:#cbd5e1;line-height:1.9;padding-left:18px;margin:0">
-              <li>多活動管理儀表板</li>
-              <li>自動候補／候補通知</li>
-              <li>金流串接（綠界、藍新）</li>
-              <li>簡易數據報表</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 style="margin:6px 0 8px">專業 Pro</h3>
-            <ul style="color:#cbd5e1;line-height:1.9;padding-left:18px;margin:0">
-              <li>球隊與球館多角色權限</li>
-              <li>記分看板即時同步</li>
-              <li>API / Webhook 整合</li>
-              <li>專屬技術支援</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-label="工具">
-      <div class="container grid-2">
-        <div class="card">
-          <h2>應用工具</h2>
-          <ul style="color:#cbd5e1;line-height:1.9;padding-left:18px;margin:0">
-            <li>📱 記分板 App（手機/平板，支援直播疊圖）</li>
-            <li>🧮 收費/出缺勤管理（合隊好幫手）</li>
-            <li>📊 活動/課程報名儀表板</li>
-            <li>🧰 小工具：排程、QR 報到、成績單匯出</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2>合作對象</h2>
-          <p class="note">球隊、球館、學校社團、教練個人品牌、賽事主辦單位、企業運動社團等</p>
-          <p style="color:#cbd5e1;line-height:1.9">我們擅長把既有流程數位化、視覺化，並提供模版與 SOP，讓你的日常營運更省時。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container grid-2">
-        <div class="card">
-          <div class="eyebrow">聯絡我們</div>
-          <h2>免費諮詢・一起把流程變簡單</h2>
-          <form id="contactForm" class="grid-2" onsubmit="return handleSubmit(event)">
-            <label>姓名<br/><input class="input" type="text" name="name" required placeholder="您的稱呼"/></label>
-            <label>Email<br/><input class="input" type="email" name="email" required placeholder="you@example.com"/></label>
-            <label style="grid-column:1/-1">需求簡述<br/><textarea class="input" name="message" rows="4" placeholder="想改善什麼流程？目前使用哪些工具？"></textarea></label>
-            <div style="display:flex;gap:12px;align-items:center">
-              <button class="btn primary" type="submit">送出需求</button>
-              <span class="note">或來信：<a href="mailto:hello@volley365.tw">hello@volley365.tw</a></span>
-            </div>
-          </form>
-        </div>
-        <div class="card">
-          <h2>公司資訊</h2>
-          <ul style="list-style:none;padding:0;margin:0;color:#cbd5e1;line-height:2">
-            <li>品牌：Volley365</li>
-            <li>定位：排球品牌／預約平台與相關應用工具的開發</li>
-            <li>地區：台灣｜支援繁中介面</li>
-            <li>社群：<a href="#" aria-label="Facebook">Facebook</a> ・ <a href="#">Instagram</a> ・ <a href="#">YouTube</a></li>
-          </ul>
-          <p class="note" style="margin-top:12px">* 此頁為示範網站樣板，可直接部署並替換內容。</p>
-        </div>
-      </div>
+    <section class="card">
+      <h2>公司資訊</h2>
+      <ul style="list-style:none;padding:0;line-height:1.8">
+        <li>公司名稱：打球去有限公司</li>
+        <li>統一編號：60699687</li>
+        <li>品牌：Volley365</li>
+        <li>定位：排球品牌／預約平台與相關應用工具的開發</li>
+        <li>地區：台灣｜支援繁中介面</li>
+      </ul>
     </section>
   </main>
 
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> Volley365. All rights reserved.</div>
-      <div class="note">Made with ❤ for Volleyball.</div>
+    <div class="container">
+      © <span id="year"></span> Volley365. All rights reserved.
     </div>
   </footer>
 
-  <style>
-    .input{width:100%;margin-top:6px;background:#0b1220;border:1px solid rgba(148,163,184,.35);border-radius:10px;padding:12px 14px;color:#e2e8f0}
-    .input:focus{outline:none;box-shadow:0 0 0 6px var(--ring);border-color:transparent}
-  </style>
   <script>
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
-
+    document.getElementById('year').textContent = new Date().getFullYear();
     function handleSubmit(e){
       e.preventDefault();
       const data = Object.fromEntries(new FormData(e.target).entries());
       const subject = encodeURIComponent('Volley365 官網詢問');
       const body = encodeURIComponent(`姓名：${data.name}\nEmail：${data.email}\n需求：\n${data.message}`);
       window.location.href = `mailto:hello@volley365.tw?subject=${subject}&body=${body}`;
-      alert('已開啟郵件視窗，請在郵件中按寄出。');
       return false;
     }
   </script>
